@@ -1,7 +1,7 @@
 ﻿using Core.Modelos;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core
+namespace Core.Context
 {
     public class GtiContext : DbContext
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Context;
 using Core.Enums;
 using Core.Modelos;
 using Microsoft.EntityFrameworkCore;
@@ -10,17 +11,13 @@ namespace Core.Repositorio
     public class ClienteRepositorio : IClienteRepositorio
     {
         private static ClienteRepositorio _instance = new ClienteRepositorio();
-        private static readonly object Instancelock = new object();
         private GtiContext _gtiContext;
 
         public static ClienteRepositorio Instance()
         {
-            lock (Instancelock)
-            {
-                if (_instance == null)
-                    _instance = new ClienteRepositorio();
-                return _instance;
-            }
+            if (_instance == null)
+                _instance = new ClienteRepositorio();
+            return _instance;
         }
 
         private ClienteRepositorio()
@@ -43,7 +40,7 @@ namespace Core.Repositorio
             }
             catch (Exception ex)
             {
-                throw new Exception (ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -52,7 +49,7 @@ namespace Core.Repositorio
             try
             {
                 var obj = _gtiContext.Cliente.Include(x => x.EnderecoCliente).Where(x => x.Id == id).FirstOrDefault();
-                if(obj != null)
+                if (obj != null)
                 {
                     _gtiContext.RemoveRange(obj.EnderecoCliente);
                     _gtiContext.Cliente.Remove(obj);

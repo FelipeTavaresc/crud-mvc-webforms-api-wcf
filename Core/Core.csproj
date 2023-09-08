@@ -253,7 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\TipoEnums.cs" />
-    <Compile Include="GtiContext.cs" />
+    <Compile Include="Context\GtiContext.cs" />
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\EnderecoCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
