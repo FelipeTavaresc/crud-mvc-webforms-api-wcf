@@ -1,48 +1,70 @@
 ﻿using Core.Modelos;
-using Core.Repositorio;
+using Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Core.Repositorio;
 
 namespace WebAPI.Controllers
 {
     public class ClienteController : ApiController
     {
-        // GET: api/Cliente
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// Returns all clientes
+        /// </summary>
+        /// <returns></returns>
+        public HttpResponseMessage GetAllClientes()
         {
-            return new string[] { "value1", "value2" };
-        }
-        
-        // GET: api/Cliente/5
-        [HttpGet]
-        public IHttpActionResult GetById(int id)
-        {
-            var cliente = ClienteRepositorio.Instance().GetClienteById(id);
-            return Ok(cliente);
+            List<Cliente> clientes = ClienteRepositorio.Instance().GetClientes();
+            return Request.CreateResponse<List<Cliente>>(HttpStatusCode.OK, clientes);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetAll()
+        /// <summary>
+        /// Returns cliente by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public HttpResponseMessage GetCliente(int id)
         {
-            var cliente = ClienteRepositorio.Instance().GetClientes();
-            return Ok(cliente);
+            Cliente cliente = ClienteRepositorio.Instance().GetClienteById(id);
+            if(cliente == null)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"Cliente {id} não encontrado");
+            else
+                return Request.CreateResponse<Cliente>(HttpStatusCode.OK, cliente);
         }
 
-        // POST: api/Cliente
-        [HttpPost]
-        public IHttpActionResult Post([FromBody] Cliente cliente)
+        /// <summary>
+        /// Post cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public HttpResponseMessage PostCliente(Cliente cliente)
         {
-            ClienteRepositorio.Instance().AddCliente(cliente);
-            return Created($"{ControllerContext.RequestContext.Url.Request.RequestUri.OriginalString}", cliente);
+            try
+            {
+                ClienteRepositorio.Instance().AddCliente(cliente);
+                var response = Request.CreateResponse<Cliente>(HttpStatusCode.Created, cliente);
+                string uri = Url.Link("DefaultApi", new { id = cliente.Id });
+                response.Headers.Location = new Uri(uri);
+                return response;
+
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Erro ao cadastrar cliente");
+            }
         }
 
-        // PUT: api/Cliente/5
-        [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] Cliente clienteEdt)
+        /// <summary>
+        /// Update cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="clienteEdt"></param>
+        /// <returns></returns>
+        public HttpResponseMessage PutCliente(int id, Cliente clienteEdt)
         {
             var cliente = ClienteRepositorio.Instance().GetClienteById(id);
             if (cliente != null)
@@ -64,23 +86,23 @@ namespace WebAPI.Controllers
                 clienteEdt.EnderecoCliente.Cidade = cliente.EnderecoCliente.Cidade;
                 clienteEdt.EnderecoCliente.UF = cliente.EnderecoCliente.UF;
                 ClienteRepositorio.Instance().UpdateCliente(clienteEdt);
+                return Request.CreateErrorResponse(HttpStatusCode.OK, "Cliente atualizado com sucesso");
             }
             else
             {
-                return NotFound();
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Erro ao atualizar cliente");
             }
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // DELETE: api/Cliente/5
-        [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        /// <summary>
+        /// Delete cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public HttpResponseMessage DeleteCliente(int id)
         {
-            Cliente cliente = ClienteRepositorio.Instance().GetClienteById(id);
-            if (cliente == null)
-                return NotFound();
             ClienteRepositorio.Instance().DeleteCliente(id);
-            return StatusCode(HttpStatusCode.NoContent);
+            return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
     }
 }
