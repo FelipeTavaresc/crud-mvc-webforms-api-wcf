@@ -1,5 +1,6 @@
 ﻿using Core.Modelos;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace Core.Context
 {
@@ -10,7 +11,8 @@ namespace Core.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=DB_GTI;MultipleActiveResultSets=True;User Id=sa;Pooling=true;Min Pool Size=1;Max Pool Size=60;Password=Madis@22");
+            var connectionString = ConfigurationManager.ConnectionStrings["CONNECTION"].ConnectionString;
+            optionsBuilder.UseSqlServer(connectionString);
             optionsBuilder.EnableSensitiveDataLogging();
         }
 

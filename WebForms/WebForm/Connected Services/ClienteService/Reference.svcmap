@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a499dc5e-f8b6-469b-83c8-1f1e72a1fe9f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52801/ClienteService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ClienteService.xsd" MetadataType="Schema" ID="c68eea38-04cb-4755-aeef-740d7f69cf64" SourceId="1" SourceUrl="http://localhost:52801/ClienteService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ClienteService1.xsd" MetadataType="Schema" ID="25eaecc8-0365-4193-aa0b-05129fd823ed" SourceId="1" SourceUrl="http://localhost:52801/ClienteService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ClienteService2.xsd" MetadataType="Schema" ID="0b09cb5a-e577-4c11-a1ce-b19aab735864" SourceId="1" SourceUrl="http://localhost:52801/ClienteService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ClienteService3.xsd" MetadataType="Schema" ID="7dd61fc4-6b7e-42a3-ac6d-887462401923" SourceId="1" SourceUrl="http://localhost:52801/ClienteService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ClienteService.wsdl" MetadataType="Wsdl" ID="0059c0de-e14b-45db-97ac-6f914cec53ac" SourceId="1" SourceUrl="http://localhost:52801/ClienteService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

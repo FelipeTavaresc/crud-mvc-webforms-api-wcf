@@ -20,20 +20,20 @@ namespace Core.Modelos
         [Column("RG")]
         public string RG { get; set; }
         [Column("DATA_EXPEDICAO")]
-        public DateTime DataExpedicao { get; set; }
+        public DateTime? DataExpedicao { get; set; }
         [Column("ORGAO_EXPEDICAO")]
         public string OrgaoExpedicao { get; set; }
         [Column("UF")]
-        public string UF { get; set; }
+        public string UFExpedicao { get; set; }
         [Required]
         [Column("DATA_NASCIMENTO")]
         public DateTime DataNascimento { get; set; }
         [Required]
         [Column("SEXO")]
-        public ESexo TipoSexo { get; set; }
+        public string TipoSexo { get; set; }
         [Required]
         [Column("ESTADO_CIVIL")]
-        public EEstadoCivil TipoEstadoCivil { get; set; }
+        public string TipoEstadoCivil { get; set; }
         [ForeignKey("CD_ENDERECO_CLIENTE")]
         public EnderecoCliente EnderecoCliente { get; set; }
     }

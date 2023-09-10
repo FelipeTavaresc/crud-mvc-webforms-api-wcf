@@ -79,7 +79,7 @@ namespace Core.Repositorio
         {
             try
             {
-                return _gtiContext.Cliente.OrderBy(x => x.Id).ToList();
+                return _gtiContext.Cliente.Include(x => x.EnderecoCliente).OrderBy(x => x.Id).ToList();
             }
             catch (Exception ex)
             {
@@ -91,6 +91,8 @@ namespace Core.Repositorio
         {
             try
             {
+                //TO DO - testar sem fazer o new GtiContext
+                _gtiContext = new GtiContext();
                 _gtiContext.Add(obj);
                 _gtiContext.SaveChanges();
             }
