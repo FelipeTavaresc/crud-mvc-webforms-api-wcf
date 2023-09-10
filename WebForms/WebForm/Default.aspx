@@ -32,6 +32,7 @@
         }
     </style>
     <script>
+        //Preenche endereço a partir do cep
         $(document).ready(function () {
             debugger;
             $('#<%=txtCEP.ClientID%>').focusout(function () {

@@ -22,6 +22,7 @@ namespace WebForm
         protected void btnNovoCliente_Click(object sender, EventArgs e)
         {
             hfClienteId.Value = "0";
+            LimparCampos();
             ShowModal();
         }
 
@@ -47,13 +48,8 @@ namespace WebForm
                     }
                 }
 
-                // Limpar os campos do modal
                 LimparCampos();
-
-                // Recarregar os clientes no GridView
                 CarregarClientes();
-
-                // Fechar o modal
                 HideModal();
             }
             catch (Exception ex)
@@ -120,7 +116,7 @@ namespace WebForm
 
             if (!string.IsNullOrEmpty(txtDataExpedicao.Text))
                 cliente.DataExpedicao = DateTime.Parse(txtDataExpedicao.Text);
-            
+
             cliente.OrgaoExpedicao = txtOrgaoExpedicao.Text;
             cliente.UFExpedicao = ddlUFExpedicao.Text;
             cliente.DataNascimento = DateTime.Parse(txtDataNascimento.Text);
@@ -146,10 +142,17 @@ namespace WebForm
             txtRG.Text = string.Empty;
             txtDataExpedicao.Text = string.Empty;
             txtOrgaoExpedicao.Text = string.Empty;
-            ddlUF.SelectedValue = "Selecione";
+            ddlUFExpedicao.Text = string.Empty;
             txtDataNascimento.Text = string.Empty;
-            ddlSexo.SelectedValue = "Selecione";
-            ddlEstadoCivil.SelectedValue = "Selecione";
+            ddlSexo.Text = "Selecione";
+            ddlEstadoCivil.Text = "Selecione";
+            txtCEP.Text = string.Empty; 
+            txtRua.Text = string.Empty;
+            txtNumero.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            ddlUF.Text = string.Empty;
         }
 
         private void CarregarClientes()
