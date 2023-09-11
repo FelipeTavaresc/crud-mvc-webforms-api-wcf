@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.33026.149
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "WebMVC\WebMVC.csproj", "{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServiceHost", "WCFServiceHost\WCFServiceHost.csproj", "{6191FAFE-22B6-4BF8-85C6-61408C4BEF27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{03885272-2757-4E76-B0D1-DCD689BB0E18}"
@@ -16,16 +14,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm", "WebForms\WebForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI\WebAPI.csproj", "{1B2AD5FB-B18B-4A94-B816-4936A4600F6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "WebMVC\WebMVC\WebMVC.csproj", "{925FCB89-923F-4A8B-A366-AEDCE38D3F2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FECB3A7-CC31-43F0-915C-DB26DF3D4343}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6191FAFE-22B6-4BF8-85C6-61408C4BEF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6191FAFE-22B6-4BF8-85C6-61408C4BEF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6191FAFE-22B6-4BF8-85C6-61408C4BEF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,6 +38,10 @@ Global
 		{1B2AD5FB-B18B-4A94-B816-4936A4600F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B2AD5FB-B18B-4A94-B816-4936A4600F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B2AD5FB-B18B-4A94-B816-4936A4600F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925FCB89-923F-4A8B-A366-AEDCE38D3F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925FCB89-923F-4A8B-A366-AEDCE38D3F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925FCB89-923F-4A8B-A366-AEDCE38D3F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925FCB89-923F-4A8B-A366-AEDCE38D3F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

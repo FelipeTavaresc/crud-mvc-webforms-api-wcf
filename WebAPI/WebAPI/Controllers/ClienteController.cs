@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
                 return response;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Erro ao cadastrar cliente");
             }
@@ -64,28 +64,28 @@ namespace WebAPI.Controllers
         /// <param name="id"></param>
         /// <param name="clienteEdt"></param>
         /// <returns></returns>
-        public HttpResponseMessage PutCliente(int id, Cliente clienteEdt)
+        public HttpResponseMessage PutCliente(Cliente clienteEdt)
         {
-            var cliente = ClienteRepositorio.Instance().GetClienteById(id);
+            var cliente = ClienteRepositorio.Instance().GetClienteById(clienteEdt.Id);
             if (cliente != null)
             {
-                clienteEdt.CPF = cliente.CPF;
-                clienteEdt.Nome = cliente.Nome;
-                clienteEdt.RG = cliente.RG;
-                clienteEdt.DataExpedicao = cliente.DataExpedicao;
-                clienteEdt.OrgaoExpedicao = cliente.OrgaoExpedicao;
-                clienteEdt.UFExpedicao = cliente.UFExpedicao;
-                clienteEdt.DataNascimento = cliente.DataNascimento;
-                clienteEdt.TipoSexo = cliente.TipoSexo;
-                clienteEdt.TipoEstadoCivil = cliente.TipoEstadoCivil;
-                clienteEdt.EnderecoCliente.CEP = cliente.EnderecoCliente.CEP;
-                clienteEdt.EnderecoCliente.Logradouro = cliente.EnderecoCliente.Logradouro;
-                clienteEdt.EnderecoCliente.Numero = cliente.EnderecoCliente.Numero;
-                clienteEdt.EnderecoCliente.Complemento = cliente.EnderecoCliente.Complemento;
-                clienteEdt.EnderecoCliente.Bairro = cliente.EnderecoCliente.Bairro;
-                clienteEdt.EnderecoCliente.Cidade = cliente.EnderecoCliente.Cidade;
-                clienteEdt.EnderecoCliente.UF = cliente.EnderecoCliente.UF;
-                ClienteRepositorio.Instance().UpdateCliente(clienteEdt);
+                cliente.CPF = clienteEdt.CPF;
+                cliente.Nome = clienteEdt.Nome;
+                cliente.RG = clienteEdt.RG;
+                cliente.DataExpedicao = clienteEdt.DataExpedicao;
+                cliente.OrgaoExpedicao = clienteEdt.OrgaoExpedicao;
+                cliente.UFExpedicao = clienteEdt.UFExpedicao;
+                cliente.DataNascimento = clienteEdt.DataNascimento;
+                cliente.TipoSexo = clienteEdt.TipoSexo;
+                cliente.TipoEstadoCivil = clienteEdt.TipoEstadoCivil;
+                cliente.EnderecoCliente.CEP = clienteEdt.EnderecoCliente.CEP;
+                cliente.EnderecoCliente.Logradouro = clienteEdt.EnderecoCliente.Logradouro;
+                cliente.EnderecoCliente.Numero = clienteEdt.EnderecoCliente.Numero;
+                cliente.EnderecoCliente.Complemento = clienteEdt.EnderecoCliente.Complemento;
+                cliente.EnderecoCliente.Bairro = clienteEdt.EnderecoCliente.Bairro;
+                cliente.EnderecoCliente.Cidade = clienteEdt.EnderecoCliente.Cidade;
+                cliente.EnderecoCliente.UF = clienteEdt.EnderecoCliente.UF;
+                ClienteRepositorio.Instance().UpdateCliente(cliente);
                 return Request.CreateErrorResponse(HttpStatusCode.OK, "Cliente atualizado com sucesso");
             }
             else

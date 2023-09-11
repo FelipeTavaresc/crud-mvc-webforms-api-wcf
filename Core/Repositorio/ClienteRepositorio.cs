@@ -29,7 +29,6 @@ namespace Core.Repositorio
         {
             try
             {
-                //TO DO - testar sem fazer o new GtiContext
                 _gtiContext = new GtiContext();
                 bool existeCliente = _gtiContext.Cliente.Any(x => x.Id == obj.Id);
                 if (existeCliente)

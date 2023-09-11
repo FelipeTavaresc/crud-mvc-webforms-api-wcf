@@ -10,7 +10,7 @@ namespace Core.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=DB_GTI;MultipleActiveResultSets=True;User Id=sa;Pooling=true;Min Pool Size=1;Max Pool Size=60;Password=Madis@22");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=DB_GTI;MultipleActiveResultSets=True;User Id=sa;Pooling=true;Min Pool Size=1;Max Pool Size=60;Password=gti");
             optionsBuilder.EnableSensitiveDataLogging();
         }
 

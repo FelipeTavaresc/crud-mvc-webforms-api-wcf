@@ -20,6 +20,7 @@ namespace Core.Modelos
         [Column("RG")]
         public string RG { get; set; }
         [Column("DATA_EXPEDICAO")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataExpedicao { get; set; }
         [Column("ORGAO_EXPEDICAO")]
         public string OrgaoExpedicao { get; set; }
@@ -27,6 +28,7 @@ namespace Core.Modelos
         public string UFExpedicao { get; set; }
         [Required]
         [Column("DATA_NASCIMENTO")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento { get; set; }
         [Required]
         [Column("SEXO")]

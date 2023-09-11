@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Core.Modelos.Cliente>
+@{
+    ViewBag.Title = "Cadastro Cliente";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr.separator {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .error {
+        border: 1px solid #C73D3F;
+        background-color: #F4E6E6
+    }
+</style>
+
+@section Scripts{
+    <script>
+        //Preenche endereço a partir do cep
+        $(document).ready(function () {
+            debugger;
+            $('#txtCEP').focusout(function () {
+                var cep = $('#txtCEP').val();
+                cep = cep.replace("-", "");
+                var urlStr = "https://viacep.com.br/ws/" + cep + "/json";
+                $.ajax({
+                    url: urlStr,
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#txtRua').val(data.logradouro);
+                        $('#txtBairro').val(data.bairro);
+                        $('#txtCidade').val(data.localidade);
+                        $('#ddlUF').val(data.uf);
+                    }
+                });
+            });
+        });
+
+        function ShowModal() {
+            $('#modal').modal('show');
+        }
+
+        //$(document).ready(function () {
+        //    $("#btnNovoCliente").click(function () {
+        //        ShowModal();
+        //    });
+        //});
+
+        function validate() {
+            //CPF
+            if (document.getElementById("txtCPF").value == "") {
+                document.getElementById("txtCPF").className = 'form-control error';
+                return false;
+            }
+
+            //Nome
+            if (document.getElementById("txtNome").value == "") {
+                document.getElementById("txtNome").className = 'form-control error';
+                return false;
+            }
+
+            //Data Nascimento
+            if (document.getElementById("txtDataNascimento").value == "") {
+                document.getElementById("txtDataNascimento").className = 'form-control error';
+                return false;
+            }
+
+            //Sexo
+            if (document.getElementById("ddlSexo").value == "") {
+                document.getElementById("ddlSexo").className = 'form-control error';
+                return false;
+            }
+
+            //Estado Cívil
+            if (document.getElementById("ddlEstadoCivil").value == "") {
+                document.getElementById("ddlEstadoCivil").className = 'form-control error';
+                return false;
+            }
+
+            //CEP
+            if (document.getElementById("txtCEP").value == "") {
+                document.getElementById("txtCEP").className = 'form-control error';
+                return false;
+            }
+
+            //Rua
+            if (document.getElementById("txtRua").value == "") {
+                document.getElementById("txtRua").className = 'form-control error';
+                return false;
+            }
+
+            //Numero
+            if (document.getElementById("txtNumero").value == "") {
+                document.getElementById("txtNumero").className = 'form-control error';
+                return false;
+            }
+
+            //Bairro
+            if (document.getElementById("txtBairro").value == "") {
+                document.getElementById("txtBairro").className = 'form-control error';
+                return false;
+            }
+
+            //Cidade
+            if (document.getElementById("txtCidade").value == "") {
+                document.getElementById("txtCidade").className = 'form-control error';
+                return false;
+            }
+
+            //UF Endereço
+            if (document.getElementById("ddlUF").value == "") {
+                document.getElementById("ddlUF").className = 'form-control error';
+                return false;
+            }
+            return true;
+        }
+
+        function onlyNumbers(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+    </script>
+}
+
+<div>
+    <h2>CRUD de Clientes</h2>
+    <p>
+        @Html.ActionLink("Novo Cliente", "Create", new { @class = "btn btn-primary" })
+    </p>
+</div>
+<br />
+<section id="section">
+    <div class="row-match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-number">
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-12">
+                                <table>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CPF</th>
+                                        <th>Nome</th>
+                                        <th>RG</th>
+                                        <th>Data Nascimento</th>
+                                        <th>Sexo</th>
+                                        <th>Ações</th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.CPF)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.RG)</td>
+                                            <td>@Convert.ToDateTime(item.DataNascimento).ToString("dd/MM/yyyy")</td>
+                                            <td>@Html.DisplayFor(modelItem => item.TipoSexo)</td>
+                                            <td>
+                                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                                                @Html.ActionLink("Excluir", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm ('Confirma a exclusão?');" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
